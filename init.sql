@@ -2,7 +2,7 @@ CREATE DATABASE IF NOT EXISTS `gestitrain` DEFAULT CHARACTER SET utf8 COLLATE ut
 USE `gestitrain`;
 
 
-CREATE TABLE `gare` (
+CREATE TABLE IF NOT EXISTS `gare` (
   `ID_gare` int(10) NOT NULL,
   `Nom_gare` varchar(20) COLLATE utf8_bin NOT NULL,
    PRIMARY KEY (`ID_gare`)
@@ -18,7 +18,7 @@ INSERT INTO `gare` (`ID_gare`, `Nom_gare`) VALUES
 (6, 'Tassin');
 
 
-CREATE TABLE `train` (
+CREATE TABLE IF NOT EXISTS `train` (
   `ID_train` int(10) NOT NULL,
   `Heure_départ` datetime NOT NULL,
   `Heure_arrivée` datetime NOT NULL,
