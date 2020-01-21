@@ -4,8 +4,8 @@
 
 $server="localhost";
 $user="user";
-$pass="root";
-$db="tp_sncf";
+$pass="user";
+$db="gestitrain";
 
 
 
@@ -82,11 +82,11 @@ echo "<table>
 while ($row = mysql_fetch_assoc($result)) {
     echo "<tr>";
 
-    echo "<td>".$row['id']."</td>";
-    echo "<td>".$row['Heure Dep']."</td>";
-    echo "<td>".$row['Heure Arr']."</td>";
-    echo "<td>".$row['Gare Dep']."</td>";
-    echo "<td>".$row['Gare Arr']."</td>";
+    echo "<td>".$row['ID_train']."</td>";
+    echo "<td>".$row['Heure_départ']."</td>";
+    echo "<td>".$row['Heure_arrivée']."</td>";
+    echo "<td>".$row['ID_gare_départ']."</td>";
+    echo "<td>".$row['ID_gare_arrivée']."</td>";
 
     echo "</tr>";
 
