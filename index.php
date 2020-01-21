@@ -1,29 +1,76 @@
 <?php
-$servername = "10.69.8.45";
-$username = "adel";
-$password = "adel";
-$dbname = "stage";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+include "param.php";
+
+// C'est la meilleur façon d'exécuter une requête SQL
+// Pour plus d'exemples, voir mysql_real_escape_string()
+$query = "select * from train";
+
+// Exécution de la requête
+$result = mysql_query($query);
+
+// Vérification du résultat
+// Ceci montre la requête envoyée à MySQL ainsi que l'erreur. Utile pour déboguer.
+if (!$result) {
+    $message  = 'Requête invalide : ' . mysql_error() . "\n";
+    $message .= 'Requête complète : ' . $query;
+    die($message);
 }
 
-// $conn->query('INSERT INTO stagiaire (nom, prenom) VALUES ("X" , "Y")');
+// Utilisation du résultat
+// Tenter d'affichager $result ne vous donnera pas d'informations contenues dans la ressource
+// Une des fonctions MySQL de résultat doit être utilisée
+// Voir aussi mysql_result(), mysql_fetch_array(), mysql_fetch_row(), etc.
 
+echo "
+<style>
 
-$sql = "SELECT id, nom, prenom FROM stagiaire";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-        // output data of each row
-        while($row = $result->fetch_assoc()) {
-        echo "id: " . $row["id"]. " - Name: " . $row["nom"]. " " . $row["prenom"]. "<br>";
-        }
-} else {
-        echo "0 results";
+table,
+td {
+    border: 1px solid #333;
 }
-$conn->close();
+
+thead,
+tfoot {
+    background-color: #333;
+    color: #fff;
+}
+
+</style>";
+
+echo "<table>
+    <thead>
+        <tr>
+            <th colspan=\"5\">The table header</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td> id train </id>
+            <td>depart </td>
+            <td>arrive</td>
+            <td>ville depart </td>
+            <td>ville arrivee</td>
+        </tr>";
+
+while ($row = mysql_fetch_assoc($result)) {
+    echo "<tr>";
+
+    echo "<td>".$row['ID_train']."</td>";
+    echo "<td>".$row['Heure_départ']."</td>";
+    echo "<td>".$row['Heure_arrivée']."</td>";
+    echo "<td>".$row['ID_gare_départ']."</td>";
+    echo "<td>".$row['ID_gare_arrivée']."</td>";
+
+    echo "</tr>";
+
+}
+
+
+echo "</tbody>
+</table>";
+
+// Libération des ressources associées au jeu de résultats
+// Ceci est effectué automatiquement à la fin du script
+mysql_free_result($result);
 ?>
