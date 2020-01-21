@@ -1,20 +1,20 @@
-<?php
-$servername = "localhost";
-$username = "user";
-$password = "user";
-$dbname = "gestitrain";
+<!DOCTYPE html>
+<html>
+<body>
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-}
+<h2>HTML Forms</h2>
 
-$Xnom = $_POST['prenom'];
-$Xprenom = $_POST['nom'];
+<form method="POST" action="ajout.php">
+  NOM:<br>
+  <input type="text" name="nom">
+  <br>
+  PRENOM:<br>
+  <input type="text" name="prenom">
+  <br><br>
+  <input type="submit" value="Submit">
+</form>
 
-$conn->query("INSERT INTO stagiaire (nom, prenom) VALUES ('$Xnom', '$Xprenom')");
 
-$conn->close();
-?>
+
+</body>
+</html>
