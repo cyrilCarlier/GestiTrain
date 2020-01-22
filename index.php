@@ -46,7 +46,7 @@ echo "<table>
         </tr>";
 while ($row = mysqli_fetch_assoc($result)) {
     echo "<tr>";
-    echo "<td>".$row['ID_train']."</td>";
+    echo "<td>".$row['tid']."</td>";
     echo "<td>".$row['Heure_départ']."</td>";
     echo "<td>".$row['Heure_arrivée']."</td>";
     echo "<td>".$row['ngd']."</td>";
