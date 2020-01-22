@@ -40,7 +40,7 @@ echo "<table>
         <tr>
             <td> id train </id>
             <td>depart </td>
-            <td>arrive</td>
+            <td>arrivee</td>
             <td>ville depart </td>
             <td>ville arrivee</td>
         </tr>";
